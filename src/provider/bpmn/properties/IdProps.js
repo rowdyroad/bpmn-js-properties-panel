@@ -65,6 +65,7 @@ function Id(props) {
   return TextFieldEntry({
     element,
     id: 'id',
+    disabled: true,
     label: translate(is(element, 'bpmn:Participant') ? 'Participant ID' : 'ID'),
     getValue,
     setValue,
