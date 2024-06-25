@@ -63,9 +63,8 @@ function TaskDefinitionExtension(props) {
 
   const businessObject = getBusinessObject(element);
 
-  let extensionElements = businessObject.get('extensionElements');
 
-  console.log('elemen:', extensionElements)
+  console.log('elem obj:', businessObject)
 
   return <div>Hello</div>
 }
