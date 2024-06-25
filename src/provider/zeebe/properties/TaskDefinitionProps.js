@@ -20,6 +20,7 @@ import {
 
 import { FeelEntryWithVariableContext } from '../../../entries/FeelEntryWithContext';
 
+import { Form } from '@bpmn-io/form-js';
 
 export function TaskDefinitionProps(props) {
   const {
@@ -62,12 +63,19 @@ function TaskDefinitionExtension(props) {
   const config  = useService('config')
 
   const td = getTaskDefinition(element);
-  console.log('elem task def:', td)
   let task = null;
   if (td) {
     task = ((config.customProperties || {}).taskTypes || []).find(tt => tt.id === td.type)
   }
-  return task ? <pre>{JSON.stringify(task.schema)}</pre>: <div>no task</div>
+
+
+  const getValue = () => {
+    console.log(task)
+    //return (getTaskDefinition(element) || {}).type;
+  };
+
+
+  return task ? <div id={"task-" + task.id}></div> : <div>no task</div>
 }
 
 function TaskDefinitionType(props) {
