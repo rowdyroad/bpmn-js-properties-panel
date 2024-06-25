@@ -131,7 +131,7 @@ function TaskDefinitionType(props) {
     feel: 'optional',
     getValue,
     setValue,
-    getOptions: ()=> [{label:'1', value:'1'},{label:'2', value:'2'}],
+    getOptions: (e)=> [{label:'1', value:'1'},{label:'2', value:'2'}],
     debounce
   });
 }
