@@ -128,10 +128,10 @@ function TaskDefinitionType(props) {
   return SelectEntry({
     element,
     id,
-    label: translate('Type1'),
+    label: translate('Type'),
     getValue,
     setValue,
-    getOptions: (e)=> [{label:'1', value:'1'},{label:'2', value:'2'}],
+    getOptions: (e)=>(config.customProperties || {}).taskTypes || [],
     debounce
   });
 }
