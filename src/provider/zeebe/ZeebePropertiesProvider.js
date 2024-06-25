@@ -58,7 +58,6 @@ export default class ZeebePropertiesProvider {
 
   constructor(propertiesPanel, injector, config) {
     propertiesPanel.registerProvider(LOW_PRIORITY, this);
-    console.log('config:', config)
 
     this._injector = injector;
   }

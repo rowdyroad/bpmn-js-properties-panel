@@ -143,6 +143,8 @@ function TaskDefinitionRetries(props) {
   const bpmnFactory = useService('bpmnFactory');
   const translate = useService('translate');
   const debounce = useService('debounceInput');
+  const config  = useService('config')
+  console.log('config2:', config)
 
   const getValue = () => {
     return (getTaskDefinition(element) || {}).retries;
