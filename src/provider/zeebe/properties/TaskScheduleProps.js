@@ -3,7 +3,7 @@ import {
   is
 } from 'bpmn-js/lib/util/ModelUtil';
 
-import { isFeelEntryEdited } from '@bpmn-io/properties-panel';
+import { isFeelEntryEdited, SelectEntry } from '@bpmn-io/properties-panel';
 
 import {
   getExtensionElementsList
@@ -18,6 +18,7 @@ import {
 } from '../../../hooks';
 
 import { FeelEntryWithVariableContext } from '../../../entries/FeelEntryWithContext';
+import ReferenceSelectEntry from "../../../entries/ReferenceSelect";
 
 
 export function TaskScheduleProps(props) {
@@ -218,7 +219,7 @@ function FollowUpDate(props) {
     commandStack.execute('properties-panel.multi-command-executor', commands);
   };
 
-  return FeelEntryWithVariableContext({
+  return SelectEntry({
     element,
     id: 'taskScheduleFollowUpDate',
     label: translate('Follow up date'),
