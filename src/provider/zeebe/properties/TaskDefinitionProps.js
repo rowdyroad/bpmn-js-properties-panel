@@ -154,7 +154,7 @@ function TaskDefinitionType(props) {
     label: translate('Type'),
     getValue,
     setValue,
-    getOptions: (e)=>((config.customProperties || {}).taskTypes || []).map(tt=>({label: t.name, value: t.id})),
+    getOptions: (e)=>((config.customProperties || {}).taskTypes || []).map(tt=>({label: tt.name, value: tt.id})),
     debounce
   });
 }
