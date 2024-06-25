@@ -19,7 +19,6 @@ import {
 } from '../utils/ZeebeServiceTaskUtil';
 
 import { FeelEntryWithVariableContext } from '../../../entries/FeelEntryWithContext';
-import ReferenceSelectEntry from "../../../entries/ReferenceSelect";
 
 
 export function TaskDefinitionProps(props) {
@@ -122,13 +121,11 @@ function TaskDefinitionType(props) {
     // (4) commit all updates
     commandStack.execute('properties-panel.multi-command-executor', commands);
   };
-  debugger;
 
   return SelectEntry({
     element,
     id,
-    label: 'Tpppppp',
-    feel: 'optional',
+    label: translate('Type'),
     getValue,
     setValue,
     getOptions: (e)=> [{label:'1', value:'1'},{label:'2', value:'2'}],
