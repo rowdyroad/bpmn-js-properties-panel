@@ -61,7 +61,11 @@ function TaskDefinitionExtension(props) {
   const debounce = useService('debounceInput');
   const config  = useService('config')
 
-  console.log('elemen:', element)
+  const businessObject = getBusinessObject(element);
+
+  let extensionElements = businessObject.get('extensionElements');
+
+  console.log('elemen:', extensionElements)
 
   return <div>Hello</div>
 }
