@@ -67,12 +67,19 @@ function TaskDefinitionExtension(props) {
   let task = null;
   if (td) {
     task = ((config.customProperties || {}).taskTypes || []).find(tt => tt.id === td.type)
+    const form = new Form({
+      container: document.querySelector('#task-' + id),
+    });
+    form.importSchema(task.schema, {})
+    form.on('submit', (event) => {
+      console.log(event.data, event.errors);
+    });
+    form.on('change', (event) => {
+      console.log(event.data, event.errors);
+    });
   }
-  const getValue = () => {
-    console.log(task)
-    //return (getTaskDefinition(element) || {}).type;
-  };
-  return task ? <div id={"task-" + task.id}></div> : <div>no task</div>
+
+  return <div id={"task-" + id}></div>
 }
 
 function TaskDefinitionType(props) {
