@@ -40,8 +40,30 @@ export function TaskDefinitionProps(props) {
       id: 'taskDefinitionRetries',
       component: TaskDefinitionRetries,
       isEdited: isFeelEntryEdited
-    }
+    },
+    {
+      id: 'taskDefinitionExtension',
+      component: TaskDefinitionExtension,
+      isEdited: isFeelEntryEdited
+    },
   ];
+}
+
+function TaskDefinitionExtension(props) {
+  const {
+    element,
+    id
+  } = props;
+
+  const commandStack = useService('commandStack');
+  const bpmnFactory = useService('bpmnFactory');
+  const translate = useService('translate');
+  const debounce = useService('debounceInput');
+  const config  = useService('config')
+
+  console.log('elemen:', element)
+
+  return <div>Hello</div>
 }
 
 function TaskDefinitionType(props) {
@@ -55,8 +77,6 @@ function TaskDefinitionType(props) {
   const translate = useService('translate');
   const debounce = useService('debounceInput');
   const config  = useService('config')
-  console.log('config2:', config)
-
 
   const getValue = () => {
     return (getTaskDefinition(element) || {}).type;
