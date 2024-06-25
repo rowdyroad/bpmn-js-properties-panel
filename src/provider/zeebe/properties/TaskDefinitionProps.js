@@ -62,11 +62,11 @@ function TaskDefinitionExtension(props) {
   const config  = useService('config')
 
   const td = getTaskDefinition(element);
-
-  const task = ((config.customProperties || {}).taskTypes || []).find(tt=>tt.id === td.type)
-
-  console.log('elem task def:', td, task)
-
+  console.log('elem task def:', td)
+  let task = null;
+  if (td) {
+    task = ((config.customProperties || {}).taskTypes || []).find(tt => tt.id === td.type)
+  }
   return task ? <pre>{JSON.stringify(task.schema)}</pre>: <div>no task</div>
 }
 
