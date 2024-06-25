@@ -128,7 +128,7 @@ function TaskDefinitionType(props) {
   return SelectEntry({
     element,
     id,
-    label: translate('Type'),
+    label: translate('Type1'),
     getValue,
     setValue,
     getOptions: (e)=> [{label:'1', value:'1'},{label:'2', value:'2'}],
