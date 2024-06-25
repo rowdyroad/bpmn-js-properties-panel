@@ -55,6 +55,7 @@ function TaskDefinitionExtension(props) {
     element,
     id
   } = props;
+  console.log('props', props)
 
   const commandStack = useService('commandStack');
   const bpmnFactory = useService('bpmnFactory');
@@ -67,14 +68,10 @@ function TaskDefinitionExtension(props) {
   if (td) {
     task = ((config.customProperties || {}).taskTypes || []).find(tt => tt.id === td.type)
   }
-
-
   const getValue = () => {
     console.log(task)
     //return (getTaskDefinition(element) || {}).type;
   };
-
-
   return task ? <div id={"task-" + task.id}></div> : <div>no task</div>
 }
 
