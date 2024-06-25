@@ -2,7 +2,7 @@ import {
   getBusinessObject
 } from 'bpmn-js/lib/util/ModelUtil';
 
-import { isFeelEntryEdited } from '@bpmn-io/properties-panel';
+import { isFeelEntryEdited, SelectEntry } from '@bpmn-io/properties-panel';
 
 import {
   getExtensionElementsList
@@ -19,6 +19,7 @@ import {
 } from '../utils/ZeebeServiceTaskUtil';
 
 import { FeelEntryWithVariableContext } from '../../../entries/FeelEntryWithContext';
+import ReferenceSelectEntry from "../../../entries/ReferenceSelect";
 
 
 export function TaskDefinitionProps(props) {
@@ -122,13 +123,14 @@ function TaskDefinitionType(props) {
     commandStack.execute('properties-panel.multi-command-executor', commands);
   };
 
-  return FeelEntryWithVariableContext({
+  return SelectEntry({
     element,
     id,
     label: translate('Type'),
     feel: 'optional',
     getValue,
     setValue,
+    getOptions: [{label:'1', value:'1'},{label:'2', value:'2'}],
     debounce
   });
 }
