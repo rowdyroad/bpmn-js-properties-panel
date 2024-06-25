@@ -56,8 +56,9 @@ const ZEEBE_GROUPS = [
 
 export default class ZeebePropertiesProvider {
 
-  constructor(propertiesPanel, injector) {
+  constructor(propertiesPanel, injector, config) {
     propertiesPanel.registerProvider(LOW_PRIORITY, this);
+    console.log('config:', config)
 
     this._injector = injector;
   }
@@ -91,7 +92,7 @@ export default class ZeebePropertiesProvider {
 
 }
 
-ZeebePropertiesProvider.$inject = [ 'propertiesPanel', 'injector' ];
+ZeebePropertiesProvider.$inject = [ 'propertiesPanel', 'injector', 'config' ];
 
 
 function CalledDecisionGroup(element, injector) {
