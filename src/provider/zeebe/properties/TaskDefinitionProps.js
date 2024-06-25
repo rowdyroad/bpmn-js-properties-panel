@@ -67,7 +67,7 @@ function TaskDefinitionExtension(props) {
   let task = null;
   if (td) {
     task = ((config.customProperties || {}).taskTypes || []).find(tt => tt.id === td.type)
-    if (!td.form) {
+    if (!element.form) {
       const form = new Form({
         container: document.querySelector('#task-' + id),
       });
@@ -75,10 +75,10 @@ function TaskDefinitionExtension(props) {
       form.on('submit', (event) => {
         console.log(event.data, event.errors);
       });
-      form.on('change', (event) => {
+      form.on('changed', (event) => {
         console.log(event.data, event.errors);
       });
-      td.form = form
+      element.form = form
     }
   }
 
