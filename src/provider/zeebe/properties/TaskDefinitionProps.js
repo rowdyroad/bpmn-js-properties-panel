@@ -122,6 +122,7 @@ function TaskDefinitionType(props) {
     // (4) commit all updates
     commandStack.execute('properties-panel.multi-command-executor', commands);
   };
+  debugger;
 
   return SelectEntry({
     element,
