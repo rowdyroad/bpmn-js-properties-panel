@@ -21,6 +21,7 @@ import {
 import { FeelEntryWithVariableContext } from '../../../entries/FeelEntryWithContext';
 
 import { Form } from '@bpmn-io/form-js';
+import {properties} from "sinon/lib/sinon/util/core/default-config";
 
 export function TaskDefinitionProps(props) {
   const {
@@ -55,7 +56,25 @@ function TaskDefinitionExtension(props) {
     element,
     id
   } = props;
-  console.log('props', props)
+
+  const setValue = (value) => {
+    const td = getTaskDefinition(element)
+    const property = createElement(
+        'zeebe:Property',
+        { name: "form", value: JSON.stringify(value)},
+        td,
+        bpmnFactory,
+    )
+    commands.push({
+      cmd: 'element.updateModdleProperties',
+      context: {
+          element,
+          moddleElement: td,
+          properties: { property }
+        }
+      });
+    commandStack.execute('properties-panel.multi-command-executor', commands);
+  };
 
   const commandStack = useService('commandStack');
   const bpmnFactory = useService('bpmnFactory');
@@ -65,7 +84,6 @@ function TaskDefinitionExtension(props) {
 
   const td = getTaskDefinition(element);
   let task = null;
-
   const container = document.querySelector('#task-' + element.id);
 
   if (td) {
@@ -75,11 +93,10 @@ function TaskDefinitionExtension(props) {
         container: container,
       });
       form.importSchema(task.schema, {})
-      form.on('submit', (event) => {
-        console.log(event.data, event.errors);
-      });
       form.on('changed', (event) => {
-        console.log(event.data, event.errors);
+        if (Object.keys(event.errors).length === 0) {
+          setValue(event.data)
+        }
       });
       element.form = form
     } else if (container) {
