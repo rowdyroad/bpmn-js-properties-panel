@@ -65,11 +65,14 @@ function TaskDefinitionExtension(props) {
 
   const td = getTaskDefinition(element);
   let task = null;
+
+  const container = document.querySelector('#task-' + element.id);
+
   if (td) {
     task = ((config.customProperties || {}).taskTypes || []).find(tt => tt.id === td.type)
     if (!element.form) {
       const form = new Form({
-        container: document.querySelector('#task-' + element.id),
+        container: container,
       });
       form.importSchema(task.schema, {})
       form.on('submit', (event) => {
@@ -79,8 +82,8 @@ function TaskDefinitionExtension(props) {
         console.log(event.data, event.errors);
       });
       element.form = form
-    } else {
-      element.form.attachTo(document.querySelector('#task-' + element.id))
+    } else if (container) {
+      element.form.attachTo(container)
     }
   }
 
