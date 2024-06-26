@@ -80,7 +80,7 @@ function TaskDefinitionExtension(props) {
       });
       element.form = form
     } else {
-      element.attachTo(document.querySelector('#task-' + element.id))
+      element.form.attachTo(document.querySelector('#task-' + element.id))
     }
   }
 
