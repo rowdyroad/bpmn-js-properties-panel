@@ -21,6 +21,7 @@ import {
 import { FeelEntryWithVariableContext } from '../../../entries/FeelEntryWithContext';
 
 import { Form } from '@bpmn-io/form-js';
+import '@bpmn-io/form-js/dist/assets/form-js.css'
 
 export function TaskDefinitionProps(props) {
   const {
@@ -69,7 +70,7 @@ function TaskDefinitionExtension(props) {
     task = ((config.customProperties || {}).taskTypes || []).find(tt => tt.id === td.type)
     if (!element.form) {
       const form = new Form({
-        container: document.querySelector('#task-' + id),
+        container: document.querySelector('#task-' + element.id),
       });
       form.importSchema(task.schema, {})
       form.on('submit', (event) => {
@@ -79,10 +80,12 @@ function TaskDefinitionExtension(props) {
         console.log(event.data, event.errors);
       });
       element.form = form
+    } else {
+      element.attachTo(document.querySelector('#task-' + element.id))
     }
   }
 
-  return <div id={"task-" + id}></div>
+  return <div id={"task-" + element.id}></div>
 }
 
 function TaskDefinitionType(props) {
