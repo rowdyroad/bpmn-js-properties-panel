@@ -21,7 +21,6 @@ import {
 import { FeelEntryWithVariableContext } from '../../../entries/FeelEntryWithContext';
 
 import { Form } from '@bpmn-io/form-js';
-import '@bpmn-io/form-js/dist/assets/form-js.css'
 
 export function TaskDefinitionProps(props) {
   const {
