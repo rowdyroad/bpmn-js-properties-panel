@@ -57,6 +57,8 @@ function TaskDefinitionExtension(props) {
   } = props;
 
   const setValue = (value) => {
+    const commands = [];
+
     const td = getTaskDefinition(element)
     const property = createElement(
         'zeebe:Property',
