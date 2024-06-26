@@ -21,7 +21,6 @@ import {
 import { FeelEntryWithVariableContext } from '../../../entries/FeelEntryWithContext';
 
 import { Form } from '@bpmn-io/form-js';
-import {properties} from "sinon/lib/sinon/util/core/default-config";
 
 export function TaskDefinitionProps(props) {
   const {
