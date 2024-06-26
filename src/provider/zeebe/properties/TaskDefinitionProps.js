@@ -60,20 +60,15 @@ function TaskDefinitionExtension(props) {
     const commands = [];
 
     const td = getTaskDefinition(element)
-    const property = createElement(
-        'zeebe:Property',
-        { name: "form", value: JSON.stringify(value)},
-        td,
-        bpmnFactory,
-    )
+
     commands.push({
       cmd: 'element.updateModdleProperties',
       context: {
-          element,
-          moddleElement: td,
-          properties: { property }
-        }
-      });
+        element,
+        moddleElement: td,
+        properties: { attributes:  JSON.stringify(value)  }
+      }
+    });
     commandStack.execute('properties-panel.multi-command-executor', commands);
   };
 
